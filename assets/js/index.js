@@ -20,17 +20,25 @@ var button3 = document.querySelector("#answer3");
 var button4 = document.querySelector("#answer4");
 var quest = document.querySelector("#question");
 
+function start() {
+    update1()
+};
+
 function update1() {
     quest.textContent = questions[0].question;
     button1.textContent = questions[0].answers[0];
     button2.textContent = questions[0].answers[1];
     button3.textContent = questions[0].answers[2];
     button4.textContent = questions[0].answers[3];
+    button3.addEventListener("click", update2);
 };
+
+
 function update2() {
     quest.textContent = questions[1].question;
     button1.textContent = questions[1].answers[0];
     button2.textContent = questions[1].answers[1];
     button3.textContent = questions[1].answers[2];
     button4.textContent = questions[1].answers[3];
+    button2.addEventListener("click", start);
 };
