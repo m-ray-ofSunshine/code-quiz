@@ -82,11 +82,18 @@ var heading = document.querySelector("#heading");
 var list = document.querySelector("#list");
 var startButton = document.querySelector("#startButton");
 var directions = document.querySelector("#directions");
-
-
+var timer =document.querySelector("#timer");
+var secondsLeft = 90
 
 startButton.addEventListener("click", function () {
-
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            finish();
+        }
+    }, 500)
     update1()
     list.style.display = "block";
     startButton.style.display = "none";
@@ -169,7 +176,11 @@ startButton.addEventListener("click", function () {
        
         if (input === questions[0].correctAnswer){
             update2();
-        };
+        } else {
+
+        }
+
+       
        
      }
      );
@@ -330,15 +341,20 @@ function update10() {
         var input = e.target.innerHTML
         
         if (input === questions[9].correctAnswer){
-            list.style.display = "none";
-            startButton.style.display = "block";
-            directions.style.display = "block";
-            heading.textContent = "Quiz";
-            directions.style.display = "block";
+            finish();
         };
         
-     }
-     
-     
-     );
     }
+    
+    
+    );
+}
+function finish() {
+    
+    list.style.display = "none";
+    startButton.style.display = "block";
+    directions.style.display = "block";
+    heading.textContent = "Quiz";
+    directions.style.display = "block";
+}
+
