@@ -14,9 +14,9 @@ var questions = [
     {
         question: "Minnesota's nickname is 'Land of 10,000 Lakes'. How many lakes(over 10 acres) are actually in MN ?",
         answers: [
-            11842, 9892, 12031, 10524
+            "11842", "9892", "12031", "10524"
         ],
-        correctAnswer: 11842
+        correctAnswer: "11842"
     },
     {
         question: "What is Minnesota's state bird?",
@@ -122,36 +122,33 @@ startButton.addEventListener("click", function () {
 //      )
   }
   )
-function start() {
-    update1()
-    list.style.display = "block";
-};
+
 
 
 
 
  function update1() {
    
-    for (i=0; i<questions.length; i++) {
-        if (i!=0) break;
-     heading.textContent = questions[i].question;
-     button1.textContent = questions[i].answers[0];
-     button2.textContent = questions[i].answers[1];
-     button3.textContent = questions[i].answers[2];
-     button4.textContent = questions[i].answers[3];
-     document.addEventListener("click", function(e) {
-         if (e.target.innerHTML === questions[i].correctAnswer) {
-             update2();
-         }else {
-             console.log("no");
-         }
-     })
-    if (i!=1) break;
-     heading.textContent = questions[i].question;
-     button1.textContent = questions[i].answers[0];
-     button2.textContent = questions[i].answers[1];
-     button3.textContent = questions[i].answers[2];
-     button4.textContent = questions[i].answers[3];
+    // for (i=0; i<questions.length; i++) {
+    //     if (i!=0) break;
+    //  heading.textContent = questions[i].question;
+    //  button1.textContent = questions[i].answers[0];
+    //  button2.textContent = questions[i].answers[1];
+    //  button3.textContent = questions[i].answers[2];
+    //  button4.textContent = questions[i].answers[3];
+    //  document.addEventListener("click", function(e) {
+    //      if (e.target.innerHTML === questions[i].correctAnswer) {
+    //          update2();
+    //      }else {
+    //          console.log("no");
+    //      }
+    //  })
+    // if (i!=1) break;
+    //  heading.textContent = questions[i].question;
+    //  button1.textContent = questions[i].answers[0];
+    //  button2.textContent = questions[i].answers[1];
+    //  button3.textContent = questions[i].answers[2];
+    //  button4.textContent = questions[i].answers[3];
 
 
 
@@ -159,7 +156,7 @@ function start() {
 
 
 
-    }
+    // }
    
    
      heading.textContent = questions[0].question;
@@ -172,9 +169,6 @@ function start() {
        
         if (input === questions[0].correctAnswer){
             update2();
-        }else {
-        
-            console.log("You lose");
         };
        
      }
@@ -193,9 +187,6 @@ function update2() {
         
         if (input === questions[1].correctAnswer){
             update3();
-        }else {
-         
-            console.log("You lose");
         };
         
      }
@@ -209,7 +200,17 @@ function update3() {
     button2.textContent = questions[2].answers[1];
     button3.textContent = questions[2].answers[2];
     button4.textContent = questions[2].answers[3];
-    button1.addEventListener("click", update4);
+    button1.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[2].correctAnswer){
+            update4();
+        };
+        
+     }
+     
+     
+     );
 };
 function update4() {
     heading.textContent = questions[3].question;
@@ -217,7 +218,17 @@ function update4() {
     button2.textContent = questions[3].answers[1];
     button3.textContent = questions[3].answers[2];
     button4.textContent = questions[3].answers[3];
-    button4.addEventListener("click", update5);
+    button4.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[3].correctAnswer){
+            update5();
+        };
+        
+     }
+     
+     
+     );
 };
 function update5() {
     heading.textContent = questions[4].question;
@@ -225,7 +236,17 @@ function update5() {
     button2.textContent = questions[4].answers[1];
     button3.textContent = questions[4].answers[2];
     button4.textContent = questions[4].answers[3];
-    button1.addEventListener("click", update6);
+    button1.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[4].correctAnswer){
+            update6();
+        };
+        
+     }
+     
+     
+     );
 };
 function update6() {
     heading.textContent = questions[5].question;
@@ -233,7 +254,17 @@ function update6() {
     button2.textContent = questions[5].answers[1];
     button3.textContent = questions[5].answers[2];
     button4.textContent = questions[5].answers[3];
-    button2.addEventListener("click", update7);
+    button2.addEventListener("click",function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[5].correctAnswer){
+            update7();
+        };
+        
+     }
+     
+     
+     );
 };
 function update7() {
     heading.textContent = questions[6].question;
@@ -241,7 +272,17 @@ function update7() {
     button2.textContent = questions[6].answers[1];
     button3.textContent = questions[6].answers[2];
     button4.textContent = questions[6].answers[3];
-    button2.addEventListener("click", update8);
+    button2.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[6].correctAnswer){
+            update8();
+        };
+        
+     }
+     
+     
+     );
 };
 function update8() {
     heading.textContent = questions[7].question;
@@ -249,7 +290,17 @@ function update8() {
     button2.textContent = questions[7].answers[1];
     button3.textContent = questions[7].answers[2];
     button4.textContent = questions[7].answers[3];
-    button2.addEventListener("click", update9);
+    button2.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[7].correctAnswer){
+            update9();
+        };
+        
+     }
+     
+     
+     );
 };
 function update9() {
     heading.textContent = questions[8].question;
@@ -257,7 +308,17 @@ function update9() {
     button2.textContent = questions[8].answers[1];
     button3.textContent = questions[8].answers[2];
     button4.textContent = questions[8].answers[3];
-    button4.addEventListener("click", update10);
+    button4.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[8].correctAnswer){
+            update10();
+        };
+        
+     }
+     
+     
+     );;
 };
 function update10() {
     heading.textContent = questions[9].question;
@@ -265,5 +326,19 @@ function update10() {
     button2.textContent = questions[9].answers[1];
     button3.textContent = questions[9].answers[2];
     button4.textContent = questions[9].answers[3];
-    button1.addEventListener("click", start);
-};
+    button1.addEventListener("click", function(e){
+        var input = e.target.innerHTML
+        
+        if (input === questions[9].correctAnswer){
+            list.style.display = "none";
+            startButton.style.display = "block";
+            directions.style.display = "block";
+            heading.textContent = "Quiz";
+            directions.style.display = "block";
+        };
+        
+     }
+     
+     
+     );
+    }
