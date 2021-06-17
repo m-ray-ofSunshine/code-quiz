@@ -9,16 +9,21 @@
     <title>Quiz</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <a>View Highscores</a>
+        <p>Timer:<span id="timer"></span></p>
+    </header>
     
-    <body>
-        <h1 id="question"></h1>
-        <ol>
+    <body style="display: flex; flex-flow: column; align-items: center;">
+        <h1 id="heading">Quiz</h1>
+        <p id="directions" style="display: block;">You must answer the questions correctly. If you get them wrong you will lose time. If you win you can add you highscore to the leaderboard.</p>
+        <ol id="list" style="display: none;">
             <li><button id="answer1"></button></li>
             <li><button id="answer2"></button></li>
             <li><button id="answer3"></button></li>
             <li><button id="answer4"></button></li>
         </ol>
+        <button id="startButton" style="display: block;">Start</button>
     </body>
 
 
