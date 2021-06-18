@@ -1,6 +1,41 @@
 body {
     text-align: center;
+    background-color: rgb(173, 127, 187);
 }
 li {
     margin: 5px;
+   
+}
+button {
+    color: white;
+    background-color: rgb(56, 200, 186);
+    padding: 5px;
+    border-radius: 5px;
+}
+h1 {
+    background-color: cornflowerblue;
+    padding: 1em;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+#directions {
+    background-color: rgb(144, 175, 233);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: white;
+    border-bottom: 2px solid black;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+#timer {
+    color: rgb(238, 71, 71);
+    font-weight: bolder;
+    
+}
+.timer {
+    color: white;
 }
