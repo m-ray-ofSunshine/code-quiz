@@ -83,6 +83,8 @@ var list = document.querySelector("#list");
 var startButton = document.querySelector("#startButton");
 var directions = document.querySelector("#directions");
 var timer =document.querySelector("#timer");
+var wrongMessage = document.querySelector("#wrong");
+
 var secondsLeft = 90
 
 startButton.addEventListener("click", function () {
@@ -90,101 +92,89 @@ startButton.addEventListener("click", function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
         if (secondsLeft === 0) {
+           secondsLeft = 90;
             clearInterval(timerInterval);
             finish();
         }
-    }, 500)
+    }, 1000)
     update1()
     list.style.display = "block";
     startButton.style.display = "none";
     directions.style.display = "none";
-//      questions.forEach(function (item, idx) {
-//          console.log(item + "|" + idx);
-
-//          heading.textContent = questions[idx].question;
-//          for (i = 0; i < questions[idx].answers.length; i++) {
-//              var btn = document.createElement("button");
-//              btn.innerHTML = questions[idx].answers[i];
-//              document.body.appendChild(btn);
-
-
-//              button1.textContent = questions[i].answers[0];
-//              button2.textContent = questions[i].answers[1];
-//              button3.textContent = questions[i].answers[2];
-//              button4.textContent = questions[i].answers[3];
-//              document.addEventListener("click", function (e) {
-//                  if (e.target.innerHTML === questions[i].correctAnswer) {
-//                      update2();
-//                  } else {
-//                      console.log("no");
-//                  }
-//              })
-
-
-
-//          }
-
-
-//      }
-//      )
-  }
-  )
+}
+)
 
 
 
 
-
- function update1() {
-   
-    // for (i=0; i<questions.length; i++) {
-    //     if (i!=0) break;
-    //  heading.textContent = questions[i].question;
-    //  button1.textContent = questions[i].answers[0];
-    //  button2.textContent = questions[i].answers[1];
-    //  button3.textContent = questions[i].answers[2];
-    //  button4.textContent = questions[i].answers[3];
-    //  document.addEventListener("click", function(e) {
-    //      if (e.target.innerHTML === questions[i].correctAnswer) {
-    //          update2();
-    //      }else {
-    //          console.log("no");
-    //      }
-    //  })
-    // if (i!=1) break;
-    //  heading.textContent = questions[i].question;
-    //  button1.textContent = questions[i].answers[0];
-    //  button2.textContent = questions[i].answers[1];
-    //  button3.textContent = questions[i].answers[2];
-    //  button4.textContent = questions[i].answers[3];
+list.addEventListener("click", function (e) {
+    var input = e.target.innerHTML
 
 
-
-
-
-
-
-    // }
-   
-   
-     heading.textContent = questions[0].question;
-     button1.textContent = questions[0].answers[0];
-     button2.textContent = questions[0].answers[1];
-     button3.textContent = questions[0].answers[2];
-     button4.textContent = questions[0].answers[3];
-     button3.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-       
-        if (input === questions[0].correctAnswer){
+    switch (input) {
+        case questions[0].correctAnswer:
             update2();
-        } else {
+            wrongMessage.style.display = "none";
+            break;
+        case questions[1].correctAnswer:
+            update3();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[2].correctAnswer:
+            update4();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[3].correctAnswer:
+            update5();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[4].correctAnswer:
+            update6();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[5].correctAnswer:
+            update7();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[6].correctAnswer:
+            update8();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[7].correctAnswer:
+            update9();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[8].correctAnswer:
+            update10();
+            wrongMessage.style.display = "none";
+            break;
+        case questions[9].correctAnswer:
+            finish();
+            wrongMessage.style.display = "none";
+            break;
+        default:
+            secondsLeft = secondsLeft-3
+            wrongMessage.textContent = "Try Again - Lose 3 seconds!"
+            wrongMessage.style.display = "block";
+            break;
 
-        }
 
-       
-       
-     }
-     );
+    }
+    
+}
+);
+
+function update1() {
+    
+    heading.textContent = questions[0].question;
+    button1.textContent = questions[0].answers[0];
+    button2.textContent = questions[0].answers[1];
+    button3.textContent = questions[0].answers[2];
+    button4.textContent = questions[0].answers[3];
+   
+    
 };
+
 
 
 function update2() {
@@ -193,17 +183,7 @@ function update2() {
     button2.textContent = questions[1].answers[1];
     button3.textContent = questions[1].answers[2];
     button4.textContent = questions[1].answers[3];
-    button2.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[1].correctAnswer){
-            update3();
-        };
-        
-     }
-     
-     
-     );
+  
 };
 function update3() {
     heading.textContent = questions[2].question;
@@ -211,35 +191,20 @@ function update3() {
     button2.textContent = questions[2].answers[1];
     button3.textContent = questions[2].answers[2];
     button4.textContent = questions[2].answers[3];
-    button1.addEventListener("click", function(e){
-        var input = e.target.innerHTML
+   
         
-        if (input === questions[2].correctAnswer){
-            update4();
-        };
-        
-     }
+      }
      
      
-     );
-};
+     
+
 function update4() {
     heading.textContent = questions[3].question;
     button1.textContent = questions[3].answers[0];
     button2.textContent = questions[3].answers[1];
     button3.textContent = questions[3].answers[2];
     button4.textContent = questions[3].answers[3];
-    button4.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[3].correctAnswer){
-            update5();
-        };
-        
-     }
-     
-     
-     );
+    
 };
 function update5() {
     heading.textContent = questions[4].question;
@@ -247,17 +212,7 @@ function update5() {
     button2.textContent = questions[4].answers[1];
     button3.textContent = questions[4].answers[2];
     button4.textContent = questions[4].answers[3];
-    button1.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[4].correctAnswer){
-            update6();
-        };
-        
-     }
-     
-     
-     );
+   
 };
 function update6() {
     heading.textContent = questions[5].question;
@@ -265,17 +220,7 @@ function update6() {
     button2.textContent = questions[5].answers[1];
     button3.textContent = questions[5].answers[2];
     button4.textContent = questions[5].answers[3];
-    button2.addEventListener("click",function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[5].correctAnswer){
-            update7();
-        };
-        
-     }
-     
-     
-     );
+   
 };
 function update7() {
     heading.textContent = questions[6].question;
@@ -283,17 +228,7 @@ function update7() {
     button2.textContent = questions[6].answers[1];
     button3.textContent = questions[6].answers[2];
     button4.textContent = questions[6].answers[3];
-    button2.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[6].correctAnswer){
-            update8();
-        };
-        
-     }
-     
-     
-     );
+  
 };
 function update8() {
     heading.textContent = questions[7].question;
@@ -301,17 +236,7 @@ function update8() {
     button2.textContent = questions[7].answers[1];
     button3.textContent = questions[7].answers[2];
     button4.textContent = questions[7].answers[3];
-    button2.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[7].correctAnswer){
-            update9();
-        };
-        
-     }
-     
-     
-     );
+    
 };
 function update9() {
     heading.textContent = questions[8].question;
@@ -319,17 +244,7 @@ function update9() {
     button2.textContent = questions[8].answers[1];
     button3.textContent = questions[8].answers[2];
     button4.textContent = questions[8].answers[3];
-    button4.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[8].correctAnswer){
-            update10();
-        };
-        
-     }
-     
-     
-     );;
+  
 };
 function update10() {
     heading.textContent = questions[9].question;
@@ -337,17 +252,7 @@ function update10() {
     button2.textContent = questions[9].answers[1];
     button3.textContent = questions[9].answers[2];
     button4.textContent = questions[9].answers[3];
-    button1.addEventListener("click", function(e){
-        var input = e.target.innerHTML
-        
-        if (input === questions[9].correctAnswer){
-            finish();
-        };
-        
-    }
-    
-    
-    );
+   
 }
 function finish() {
     
@@ -356,5 +261,6 @@ function finish() {
     directions.style.display = "block";
     heading.textContent = "Quiz";
     directions.style.display = "block";
+    
 }
 
