@@ -84,19 +84,25 @@ var startButton = document.querySelector("#startButton");
 var directions = document.querySelector("#directions");
 var timer =document.querySelector("#timer");
 var wrongMessage = document.querySelector("#wrong");
+var form = document.querySelector("#form");
 
 var secondsLeft = 90
+var finalScore = ""
+var timerInterval;
+
 
 startButton.addEventListener("click", function () {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timer.textContent = secondsLeft;
-        if (secondsLeft === 0) {
-           secondsLeft = 90;
-            clearInterval(timerInterval);
-            finish();
+    timerInterval = setInterval(function () {
+            secondsLeft--;
+            timer.textContent = secondsLeft;
+            if (secondsLeft === 0) {
+                secondsLeft = 90;
+                clearInterval(timerInterval);
+                finish();
+            }
         }
-    }, 1000)
+        ,1000)
+
     update1()
     list.style.display = "block";
     startButton.style.display = "none";
@@ -254,13 +260,16 @@ function update10() {
     button4.textContent = questions[9].answers[3];
    
 }
-function finish() {
-    
+function finish(timerInterval) {
+    finalScore = secondsLeft
+    console.log("hello");
+    clearInterval(timerInterval);
     list.style.display = "none";
-    startButton.style.display = "block";
-    directions.style.display = "block";
-    heading.textContent = "Quiz";
-    directions.style.display = "block";
     
+    directions.textContent = "Your final score is " + finalScore
+    directions.style.display = "block";
+    heading.textContent = "You have finished!";
+    directions.style.display = "block";
+    form.style.display = "block"
 }
 
