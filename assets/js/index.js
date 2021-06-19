@@ -82,190 +82,85 @@ var heading = document.querySelector("#heading");
 var list = document.querySelector("#list");
 var startButton = document.querySelector("#startButton");
 var directions = document.querySelector("#directions");
-var timer =document.querySelector("#timer");
+var timer = document.querySelector("#timer");
 var wrongMessage = document.querySelector("#wrong");
 var form = document.querySelector("#form");
+var allButtons = list.getElementsByTagName("button")
+
 
 var secondsLeft = 90
 var finalScore = ""
 var timerInterval;
+var idx = 0
+
+startButton.addEventListener("click", start)
 
 
-startButton.addEventListener("click", function () {
+function start() {
+
     timerInterval = setInterval(function () {
-            secondsLeft--;
-            timer.textContent = secondsLeft;
-            if (secondsLeft === 0) {
-                secondsLeft = 90;
-                clearInterval(timerInterval);
-                finish();
-            }
+        secondsLeft--;
+        timer.textContent = secondsLeft;
+        if (secondsLeft === 0) {
+            secondsLeft = 90;
+            clearInterval(timerInterval);
+            
         }
-        ,1000)
+    }
+        , 1000)
+    displayQuestion();
 
-    update1()
-    list.style.display = "block";
-    startButton.style.display = "none";
+    list.style.display = "flex";
+    startButton.css.display = "none";
     directions.style.display = "none";
 }
-)
-
-
 
 
 list.addEventListener("click", function (e) {
-    var input = e.target.innerHTML
-
-
-    switch (input) {
-        case questions[0].correctAnswer:
-            update2();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[1].correctAnswer:
-            update3();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[2].correctAnswer:
-            update4();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[3].correctAnswer:
-            update5();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[4].correctAnswer:
-            update6();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[5].correctAnswer:
-            update7();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[6].correctAnswer:
-            update8();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[7].correctAnswer:
-            update9();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[8].correctAnswer:
-            update10();
-            wrongMessage.style.display = "none";
-            break;
-        case questions[9].correctAnswer:
-            finish();
-            wrongMessage.style.display = "none";
-            break;
-        default:
-            secondsLeft = secondsLeft-3
-            wrongMessage.textContent = "Try Again - Lose 3 seconds!"
-            wrongMessage.style.display = "block";
-            break;
-
-
+    var button = e.target
+    if (button.getAttribute("correct") === "true") {
+        idx++;
+        while (list.firstChild) {
+            list.firstChild.remove()
+        }
+        displayQuestion();
     }
-    
+
+
+
+
 }
 );
 
-function update1() {
-    
-    heading.textContent = questions[0].question;
-    button1.textContent = questions[0].answers[0];
-    button2.textContent = questions[0].answers[1];
-    button3.textContent = questions[0].answers[2];
-    button4.textContent = questions[0].answers[3];
-   
-    
+function displayQuestion() {
+    if (idx > 9) {
+        finish();
+
+    } else {
+
+        heading.textContent = questions[idx].question;
+        for (i = 0; i < questions[idx].answers.length; i++) {
+            var li = document.createElement("button")
+            li.textContent = questions[idx].answers[i];
+            if (li.textContent === questions[idx].correctAnswer) {
+                li.setAttribute("correct", true)
+            } else {
+                li.setAttribute("correct", false)
+            }
+            list.appendChild(li);
+
+        }
+
+    }
+
 };
 
-
-
-function update2() {
-    heading.textContent = questions[1].question;
-    button1.textContent = questions[1].answers[0];
-    button2.textContent = questions[1].answers[1];
-    button3.textContent = questions[1].answers[2];
-    button4.textContent = questions[1].answers[3];
-  
-};
-function update3() {
-    heading.textContent = questions[2].question;
-    button1.textContent = questions[2].answers[0];
-    button2.textContent = questions[2].answers[1];
-    button3.textContent = questions[2].answers[2];
-    button4.textContent = questions[2].answers[3];
-   
-        
-      }
-     
-     
-     
-
-function update4() {
-    heading.textContent = questions[3].question;
-    button1.textContent = questions[3].answers[0];
-    button2.textContent = questions[3].answers[1];
-    button3.textContent = questions[3].answers[2];
-    button4.textContent = questions[3].answers[3];
-    
-};
-function update5() {
-    heading.textContent = questions[4].question;
-    button1.textContent = questions[4].answers[0];
-    button2.textContent = questions[4].answers[1];
-    button3.textContent = questions[4].answers[2];
-    button4.textContent = questions[4].answers[3];
-   
-};
-function update6() {
-    heading.textContent = questions[5].question;
-    button1.textContent = questions[5].answers[0];
-    button2.textContent = questions[5].answers[1];
-    button3.textContent = questions[5].answers[2];
-    button4.textContent = questions[5].answers[3];
-   
-};
-function update7() {
-    heading.textContent = questions[6].question;
-    button1.textContent = questions[6].answers[0];
-    button2.textContent = questions[6].answers[1];
-    button3.textContent = questions[6].answers[2];
-    button4.textContent = questions[6].answers[3];
-  
-};
-function update8() {
-    heading.textContent = questions[7].question;
-    button1.textContent = questions[7].answers[0];
-    button2.textContent = questions[7].answers[1];
-    button3.textContent = questions[7].answers[2];
-    button4.textContent = questions[7].answers[3];
-    
-};
-function update9() {
-    heading.textContent = questions[8].question;
-    button1.textContent = questions[8].answers[0];
-    button2.textContent = questions[8].answers[1];
-    button3.textContent = questions[8].answers[2];
-    button4.textContent = questions[8].answers[3];
-  
-};
-function update10() {
-    heading.textContent = questions[9].question;
-    button1.textContent = questions[9].answers[0];
-    button2.textContent = questions[9].answers[1];
-    button3.textContent = questions[9].answers[2];
-    button4.textContent = questions[9].answers[3];
-   
-}
-function finish(timerInterval) {
+function finish() {
     finalScore = secondsLeft
-    console.log("hello");
-    clearInterval(timerInterval);
+    timer.style.display = "none"
+    secondsLeft = 0
     list.style.display = "none";
-    
+
     directions.textContent = "Your final score is " + finalScore
     directions.style.display = "block";
     heading.textContent = "You have finished!";
