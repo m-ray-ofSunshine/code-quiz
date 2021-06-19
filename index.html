@@ -10,7 +10,7 @@
 </head>
 <body>
     <header style="display: flex; justify-content: space-between; width: 100%;align-items: center;">
-        <a href=""> View Highscores</a>
+        <a href="./highScores.html"> View Highscores</a>
         <p class="timer">Timer: <span id="timer">90</span> seconds left</p>
     </header>
     
@@ -18,15 +18,11 @@
         <h1 id="heading">Quiz</h1>
         <p id="directions" style="display: block;">You must answer the questions correctly. If you get them wrong you will lose time. If you win you can add you highscore to the leaderboard.</p>
         <ol id="list" style="display: none;">
-            <!-- <li><button id="answer1"></button></li>
-            <li><button id="answer2"></button></li>
-            <li><button id="answer3"></button></li>
-            <li><button id="answer4"></button></li> -->
         </ol>
         <form id="form" style="display: none;">
-            <label for="initials">Enter your initials:</label>
-            <input type="text" id="initials" name="initials">
-            <input type="submit" value="Submit">
+            <label >Enter your initials:</label>
+            <input type="text" id="initials" >
+            <button id="submit" type="submit" value="Submit">Submit</button>
         </form>
         <button id="startButton" style="display: block;">Start</button>
         <p id="wrong" style="display: none;"></p>

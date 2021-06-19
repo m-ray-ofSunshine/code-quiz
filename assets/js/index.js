@@ -85,8 +85,8 @@ var directions = document.querySelector("#directions");
 var timer = document.querySelector("#timer");
 var wrongMessage = document.querySelector("#wrong");
 var form = document.querySelector("#form");
-var allButtons = list.getElementsByTagName("button")
-
+var submitButton = document.querySelector("#submit")
+var initials = document.getElementById("initials")
 
 var secondsLeft = 90
 var finalScore = ""
@@ -95,6 +95,35 @@ var idx = 0
 
 startButton.addEventListener("click", start)
 
+
+
+
+list.addEventListener("click", function (e) {
+    var button = e.target
+    if (button.getAttribute("correct") === "true") {
+        idx++;
+        while (list.firstChild) {
+            list.firstChild.remove()
+        }
+        displayQuestion();
+    }
+    
+    
+    
+    
+}
+);
+
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log(initials);
+   var score = {
+       highScore: finalScore,
+       nameAbrv: initials.value
+   }
+
+    localStorage.setItem("winner", JSON.stringify(score));
+})
 
 function start() {
 
@@ -111,33 +140,16 @@ function start() {
     displayQuestion();
 
     list.style.display = "flex";
-    startButton.css.display = "none";
+    startButton.style.display = "none";
     directions.style.display = "none";
 }
-
-
-list.addEventListener("click", function (e) {
-    var button = e.target
-    if (button.getAttribute("correct") === "true") {
-        idx++;
-        while (list.firstChild) {
-            list.firstChild.remove()
-        }
-        displayQuestion();
-    }
-
-
-
-
-}
-);
 
 function displayQuestion() {
     if (idx > 9) {
         finish();
-
+        
     } else {
-
+        
         heading.textContent = questions[idx].question;
         for (i = 0; i < questions[idx].answers.length; i++) {
             var li = document.createElement("button")
