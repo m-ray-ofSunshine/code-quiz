@@ -87,6 +87,10 @@ var wrongMessage = document.querySelector("#wrong");
 var form = document.querySelector("#form");
 var submitButton = document.querySelector("#submit")
 var initials = document.getElementById("initials")
+var highScores =[{
+    highScore: "finalScore",
+    nameAbrv: "initials.value"
+}];
 
 var secondsLeft = 90
 var finalScore = ""
@@ -116,13 +120,17 @@ list.addEventListener("click", function (e) {
 
 submitButton.addEventListener("click", function(e) {
     e.preventDefault();
-    console.log(initials);
-   var score = {
-       highScore: finalScore,
-       nameAbrv: initials.value
-   }
-
-    localStorage.setItem("winner", JSON.stringify(score));
+    
+    for (i=0; i < highScores.length; i++) {
+        
+    var score = {
+            highScore: finalScore,
+            nameAbrv: initials.value
+        }
+        highScores.push(score);
+        console.log(highScores);
+    }
+    localStorage.setItem("winner", JSON.stringify(highScores));
 })
 
 function start() {
